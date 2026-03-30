@@ -3,26 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Local AI Chatbot Demo</title>
+    <title>AI Chat Comparison</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="chat-app">
-      <h1>Local AI Chatbot</h1>
+    <header class="app-header">
+      <h1>AI Chat Comparison</h1>
+      <p class="app-subtitle">See how web search enhances your answers</p>
+    </header>
 
-      <section id="chatBox" class="chat-box" aria-live="polite"></section>
+    <main class="chat-layout">
+      <!-- Left Panel: Plain Ollama -->
+      <section class="panel" id="panelLeft">
+        <div class="panel-header">
+          <span class="panel-icon">🤖</span>
+          <span class="panel-title">AI Chat</span>
+          <span class="panel-badge">Ollama only</span>
+        </div>
+        <div
+          id="chatBoxLeft"
+          class="chat-box"
+          aria-live="polite"
+          aria-label="AI Chat messages"
+        ></div>
+      </section>
 
+      <!-- Right Panel: Ollama + Web Search -->
+      <section class="panel" id="panelRight">
+        <div class="panel-header">
+          <span class="panel-icon">🌐</span>
+          <span class="panel-title">AI + Web Search</span>
+          <span class="panel-badge panel-badge--search">Live web context</span>
+        </div>
+        <div
+          id="chatBoxRight"
+          class="chat-box"
+          aria-live="polite"
+          aria-label="AI with Web Search messages"
+        ></div>
+      </section>
+    </main>
+
+    <!-- Shared Input -->
+    <footer class="chat-footer">
       <form id="chatForm" class="chat-form">
         <input
           id="messageInput"
           name="message"
           type="text"
-          placeholder="Type a message..."
+          placeholder="Ask anything — both panels respond simultaneously…"
+          autocomplete="off"
           required
         />
-        <button type="submit">Send</button>
+        <button type="submit" id="sendBtn">Send</button>
       </form>
-    </main>
+    </footer>
 
     <script src="app.js"></script>
   </body>
